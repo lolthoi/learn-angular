@@ -1,0 +1,4 @@
+<input placeholder="Enter your name" (input)="InputName($event)" />
+<p [ngStyle]="name.length % 2 === 0 ? evenStyle : oddStyle">
+  Name: {{ name }}
+</p>

@@ -1,0 +1,28 @@
+<div *ngIf="isShowForm">
+  <input type="text" placeholder="Product name" (input)="Pname($event)" />
+  <br />
+  <input type="text" placeholder="Product description" (input)="Pdes($event)" />
+  <br />
+  <input type="text" placeholder="Product price" (input)="Pprice($event)" />
+  <br />
+  <input type="text" placeholder="Product quantity" (input)="Pquan($event)" />
+  <br />
+  <button (click)="addProduct()">Add Product</button>
+</div>
+<button (click)="isShowForm = true" *ngIf="!isShowForm">Add Product</button>
+<br />
+<br />
+<select [(ngModel)]="filterStatus">
+  <option value="2">Giá thấp nhất</option>
+  <option value="1">Giá cao nhất</option>
+  <option value="0">Giá mặc định</option>
+</select>
+<div *ngFor="let item of products">
+  <div>
+    <h3>name: {{ item.name }}</h3>
+    <h3>description: {{ item.description }}</h3>
+    <h3>price: {{ item.price }}</h3>
+    <h3>quantity: {{ item.quantity }}</h3>
+    <br />
+  </div>
+</div>

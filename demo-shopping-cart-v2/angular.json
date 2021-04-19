@@ -1,18 +1,14 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "3c9ec16c-bd98-4568-abfe-cfa232a4172b"
+    "analytics": "5784ab3d-d7a3-41d2-b18e-8fcff0eade96"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "learn-angular": {
+    "demo-shopping-cart-v2": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -20,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/learn-angular",
+            "outputPath": "dist/demo-shopping-cart-v2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -53,13 +49,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ]
             }
@@ -68,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "learn-angular:build"
+            "browserTarget": "demo-shopping-cart-v2:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "learn-angular:build:production"
+              "browserTarget": "demo-shopping-cart-v2:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "learn-angular:build"
+            "browserTarget": "demo-shopping-cart-v2:build"
           }
         },
         "test": {
@@ -116,16 +112,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "learn-angular:serve"
+            "devServerTarget": "demo-shopping-cart-v2:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "learn-angular:serve:production"
+              "devServerTarget": "demo-shopping-cart-v2:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "learn-angular"
+  "defaultProject": "demo-shopping-cart-v2"
 }
