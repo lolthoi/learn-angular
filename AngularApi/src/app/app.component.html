@@ -1,10 +1,18 @@
-<a [routerLink]="['/']" routerLinkActive="router-link-active">Home Page</a>
-&nbsp;|
-<a [routerLink]="['/product']" routerLinkActive="router-link-active"
-  >Product List</a
->
-&nbsp;|
-<a [routerLink]="['/about']" routerLinkActive="router-link-active"
-  >About Page</a
->
+<div class="container">
+  <a [routerLink]="['/']" routerLinkActive="router-link-active"> Home Page</a>
+  &nbsp;|
+  <a [routerLink]="['/product']" routerLinkActive="router-link-active"
+    > Product List</a
+  >
+  &nbsp;|
+  <a [routerLink]="['/about']" routerLinkActive="router-link-active"
+    > About Page</a
+  >
+  &nbsp;|
+  <a [routerLink]="['/people']" routerLinkActive="router-link-active"
+    > People Management</a
+  >
+</div>
+<br />
+
 <router-outlet></router-outlet>
