@@ -13,6 +13,7 @@ import { PeopleComponent } from './people/people.component';
 import { PeopleCreateComponent } from './people-create/people-create.component';
 import { PeopleEditComponent } from './people-edit/people-edit.component';
 import { PeopleDetailsComponent } from './people-details/people-details.component';
+import { PeopleService } from './Services/people.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { PeopleDetailsComponent } from './people-details/people-details.componen
     PeopleDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [],
+  providers: [PeopleService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
