@@ -1,1 +1,15 @@
-<p>brand works!</p>
+<div id="data-grid-demo">
+  <dx-button
+    id="gridDeleteSelected"
+    text="Delete Selected Records"
+    [height]="34"
+  >
+  </dx-button>
+  <dx-data-grid id="gridContainer" [dataSource]="brand" [showBorders]="true">
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing mode="cell" [allowUpdating]="true"> </dxo-editing>
+    <dxo-selection mode="multiple"></dxo-selection>
+
+    <dxi-column dataField="brandName" caption="Brand"></dxi-column>
+  </dx-data-grid>
+</div>

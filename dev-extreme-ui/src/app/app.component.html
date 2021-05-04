@@ -1,3 +1,14 @@
-<!-- <dx-button text="Click me" (onClick)="helloWorld()"> </dx-button> -->
+<div class="container">
+  <a [routerLink]="['/category']" routerLinkActive="router-link-active"
+    >Category</a
+  >
+  &nbsp;|
+  <a [routerLink]="['/brand']" routerLinkActive="router-link-active">Brand</a>
+  &nbsp;|
+  <a [routerLink]="['/product']" routerLinkActive="router-link-active">
+    Product</a
+  >
+</div>
+<br />
 
-<app-staff></app-staff>
+<router-outlet></router-outlet>

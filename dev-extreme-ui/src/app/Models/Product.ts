@@ -10,8 +10,6 @@ export class Products {
   categoryId: number;
   modelYear: number;
   listPrice: number;
-  brand: Brands;
-  category: Categories;
   orderItems: OrderItems[];
   stocks: Stocks[];
 }

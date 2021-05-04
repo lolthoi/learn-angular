@@ -1,0 +1,68 @@
+<p>Click this text and press <b>Tab</b></p>
+<dx-data-grid
+  id="gridContainer"
+  [dataSource]="product"
+  keyExpr="productId"
+  [showBorders]="true"
+  [focusedRowEnabled]="true"
+  (onEditingStart)="logEvent('EditingStart')"
+  (onInitNewRow)="logEvent('InitNewRow')"
+  (onRowInserting)="logEvent('RowInserting')"
+  (onRowInserted)="logEvent('RowInserted')"
+  (onRowUpdating)="logEvent('RowUpdating')"
+  (onRowUpdated)="logEvent('RowUpdated')"
+  (onRowRemoving)="logEvent('RowRemoving')"
+  (onRowRemoved)="logEvent('RowRemoved')"
+  (onSaving)="logEvent('Saving')"
+  (onSaved)="logEvent('Saved')"
+  (onEditCanceling)="logEvent('EditCanceling')"
+  (onEditCanceled)="logEvent('EditCanceled')"
+  (onSelectionChanged)="selectionChanged($event)"
+>
+  <dxo-editing
+    [allowUpdating]="true"
+    [allowDeleting]="true"
+    [selectTextOnEditStart]="true"
+    [useIcons]="true"
+  >
+  </dxo-editing>
+
+  <dxo-header-filter [visible]="true"> </dxo-header-filter>
+
+  <dxo-filter-panel [visible]="true"> </dxo-filter-panel>
+
+  <dxo-filter-row [visible]="true"> </dxo-filter-row>
+
+  <dxo-paging [pageSize]="10"> </dxo-paging>
+
+  <dxo-pager
+    [allowedPageSizes]="[5, 10]"
+    [showPageSizeSelector]="true"
+    [showNavigationButtons]="true"
+  >
+  </dxo-pager>
+
+  <dxi-column dataField="productName" caption="Product"> </dxi-column>
+
+  <dxi-column dataField="modelYear" caption="Model"> </dxi-column>
+
+  <dxi-column dataField="listPrice" caption="Price"> </dxi-column>
+
+  <dxi-column dataField="brandId" caption="Brand">
+    <dxo-lookup
+      [dataSource]="brand"
+      valueExpr="brandId"
+      displayExpr="brandName"
+    >
+    </dxo-lookup>
+  </dxi-column>
+
+  <dxi-column dataField="categoryId" caption="Category">
+    <dxo-lookup
+      [dataSource]="category"
+      valueExpr="categoryId"
+      displayExpr="categoryName"
+    >
+    </dxo-lookup>
+  </dxi-column>
+</dx-data-grid>
