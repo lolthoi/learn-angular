@@ -5,6 +5,9 @@
     keyExpr="staffId"
     [showBorders]="true"
     [hoverStateEnabled]="true"
+    (onRowInserted)="logEvent('RowInserted')"
+    (onRowUpdated)="logEvent('RowUpdated')"
+    (onRowRemoved)="logEvent('RowRemoved')"
   >
     <dxo-paging [enabled]="false"></dxo-paging>
     <dxo-editing mode="popup" [allowUpdating]="true">
@@ -17,8 +20,8 @@
       </dxo-popup>
       <dxo-form>
         <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
-          <dxi-item dataField="FirstName"></dxi-item>
-          <dxi-item dataField="LastName"></dxi-item>
+          <dxi-item dataField="firstName" caption="First Name"></dxi-item>
+          <dxi-item dataField="lastName" caption="Last Name"></dxi-item>
 
           <dxi-item dataField="BirthDate"></dxi-item>
           <dxi-item dataField="Position"></dxi-item>
@@ -38,7 +41,14 @@
           [colCount]="2"
           [colSpan]="2"
         >
-          <dxi-item dataField="storeId" caption="Store"></dxi-item>
+          <dxi-item dataField="storeId" caption="Store">
+            <dxo-lookup
+              [dataSource]="stores"
+              displayExpr="storeName"
+              valueExpr="storeId"
+            >
+            </dxo-lookup>
+          </dxi-item>
           <dxi-item dataField="Address"></dxi-item>
         </dxi-item>
       </dxo-form>
@@ -56,7 +66,6 @@
       >
       </dxo-lookup>
     </dxi-column>
-    <dxi-column dataField="Address" [visible]="false"> </dxi-column>
-    <dxi-column dataField="Notes" [visible]="false"> </dxi-column>
+    <dxi-column dataField="active" caption="Status"> </dxi-column>
   </dx-data-grid>
 </div>

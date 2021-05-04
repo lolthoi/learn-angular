@@ -27,4 +27,5 @@ export class StaffComponent implements OnInit {
       this.stores = res;
     });
   }
+  logEvent(eventName) {}
 }
