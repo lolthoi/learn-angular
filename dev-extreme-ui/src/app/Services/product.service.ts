@@ -29,13 +29,13 @@ export class ProductService {
       .post<Products>(`${url}` + `${currentdata}`, product)
       .pipe();
   }
-  /** UPDATE: edit person by id */
+  /** UPDATE: edit by id */
   update(product: Products): Observable<Products> {
     return this.http
       .put<Products>(`${url}` + `${currentdata}/${product.productId}`, product)
       .pipe();
   }
-  /** DELETE: delete person from the server by id */
+  /** DELETE: delete from the server by id */
   delete(id: number): Observable<Products> {
     return this.http
       .delete<Products>(`${url}` + `${currentdata}` + `/${id}`)

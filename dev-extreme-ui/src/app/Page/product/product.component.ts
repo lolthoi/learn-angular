@@ -37,9 +37,7 @@ export class ProductComponent implements OnInit {
   }
   onDelete(e: any) {
     this.productService.delete(e.key).subscribe(() => {
-      this.products = this.products.filter(
-        (product) => product.productId !== e.key
-      );
+      this.products;
     });
   }
 
@@ -70,7 +68,8 @@ export class ProductComponent implements OnInit {
       orderItems: [],
       stocks: [],
     };
-    this.productService.create(this.product).subscribe(() => {});
-    this.products;
+    this.productService.create(this.product).subscribe(() => {
+      this.products;
+    });
   }
 }

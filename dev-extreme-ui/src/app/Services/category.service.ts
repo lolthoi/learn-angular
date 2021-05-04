@@ -29,7 +29,7 @@ export class CategoryService {
       .post<Categories>(`${url}` + `${currentdata}`, category)
       .pipe();
   }
-  /** UPDATE: edit person by id */
+  /** UPDATE: edit by id */
   update(category: Categories): Observable<Categories> {
     return this.http
       .put<Categories>(
@@ -38,7 +38,7 @@ export class CategoryService {
       )
       .pipe();
   }
-  /** DELETE: delete person from the server by id */
+  /** DELETE: delete from the server by id */
   delete(id: number): Observable<Categories> {
     return this.http
       .delete<Categories>(`${url}` + `${currentdata}` + `/${id}`)

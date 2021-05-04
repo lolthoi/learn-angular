@@ -23,13 +23,13 @@ export class StaffService {
   create(staff: Staffs): Observable<Staffs> {
     return this.http.post<Staffs>(`${url}` + `${currentdata}`, staff).pipe();
   }
-  /** UPDATE: edit person by id */
+  /** UPDATE: edit by id */
   update(staff: Staffs): Observable<Staffs> {
     return this.http
       .put<Staffs>(`${url}` + `${currentdata}/${staff.staffId}`, staff)
       .pipe();
   }
-  /** DELETE: delete person from the server by id */
+  /** DELETE: delete from the server by id */
   delete(id: number): Observable<Staffs> {
     return this.http
       .delete<Staffs>(`${url}` + `${currentdata}` + `/${id}`)

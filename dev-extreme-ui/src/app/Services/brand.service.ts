@@ -29,7 +29,7 @@ export class BrandService {
       .post<Brands>(`${url}` + `${currentdata}`, brand)
       .pipe();
   }
-  /** UPDATE: edit person by id */
+  /** UPDATE: edit by id */
   update(brand: Brands): Observable<Brands> {
     return this.http
       .put<Brands>(
@@ -38,7 +38,7 @@ export class BrandService {
       )
       .pipe();
   }
-  /** DELETE: delete person from the server by id */
+  /** DELETE: delete from the server by id */
   delete(id: number): Observable<Brands> {
     return this.http
       .delete<Brands>(`${url}` + `${currentdata}` + `/${id}`)

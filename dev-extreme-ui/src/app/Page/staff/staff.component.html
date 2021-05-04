@@ -1,15 +1,62 @@
-<div class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr></tr>
-    </tbody>
-  </table>
+<div id="data-grid-demo">
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="staffs"
+    keyExpr="staffId"
+    [showBorders]="true"
+    [hoverStateEnabled]="true"
+  >
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing mode="popup" [allowUpdating]="true">
+      <dxo-popup
+        title="Staff Information"
+        [showTitle]="true"
+        [width]="700"
+        [height]="525"
+      >
+      </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+          <dxi-item dataField="FirstName"></dxi-item>
+          <dxi-item dataField="LastName"></dxi-item>
+
+          <dxi-item dataField="BirthDate"></dxi-item>
+          <dxi-item dataField="Position"></dxi-item>
+
+          <dxi-item
+            dataField="Notes"
+            editorType="dxTextArea"
+            [colSpan]="2"
+            [editorOptions]="{ height: 100 }"
+          >
+          </dxi-item>
+        </dxi-item>
+
+        <dxi-item
+          itemType="group"
+          caption="Home Address"
+          [colCount]="2"
+          [colSpan]="2"
+        >
+          <dxi-item dataField="storeId" caption="Store"></dxi-item>
+          <dxi-item dataField="Address"></dxi-item>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+
+    <dxi-column dataField="firstName"></dxi-column>
+    <dxi-column dataField="lastName"></dxi-column>
+    <dxi-column dataField="email" dataType="date"> </dxi-column>
+    <dxi-column dataField="phone" [width]="170"> </dxi-column>
+    <dxi-column dataField="storeId" caption="Store" [width]="125">
+      <dxo-lookup
+        [dataSource]="stores"
+        displayExpr="storeName"
+        valueExpr="storeId"
+      >
+      </dxo-lookup>
+    </dxi-column>
+    <dxi-column dataField="Address" [visible]="false"> </dxi-column>
+    <dxi-column dataField="Notes" [visible]="false"> </dxi-column>
+  </dx-data-grid>
 </div>
