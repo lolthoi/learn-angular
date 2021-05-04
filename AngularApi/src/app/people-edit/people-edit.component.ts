@@ -10,7 +10,6 @@ import { PeopleService } from '../Services/people.service';
 })
 export class PeopleEditComponent implements OnInit {
   person = new People();
-
   id: number;
   name: string;
   cName(event) {

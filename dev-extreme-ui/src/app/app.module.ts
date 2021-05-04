@@ -25,7 +25,7 @@ import { ProductService } from './Services/product.service';
     DxButtonModule,
     HttpClientModule,
   ],
-  providers: [ProductService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

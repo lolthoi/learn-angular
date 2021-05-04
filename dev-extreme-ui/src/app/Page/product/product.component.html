@@ -1,29 +1,22 @@
 <p>Click this text and press <b>Tab</b></p>
 <dx-data-grid
   id="gridContainer"
-  [dataSource]="product"
+  [dataSource]="products"
   keyExpr="productId"
   [showBorders]="true"
   [focusedRowEnabled]="true"
-  (onEditingStart)="logEvent('EditingStart')"
-  (onInitNewRow)="logEvent('InitNewRow')"
-  (onRowInserting)="logEvent('RowInserting')"
-  (onRowInserted)="logEvent('RowInserted')"
-  (onRowUpdating)="logEvent('RowUpdating')"
-  (onRowUpdated)="logEvent('RowUpdated')"
-  (onRowRemoving)="logEvent('RowRemoving')"
-  (onRowRemoved)="logEvent('RowRemoved')"
-  (onSaving)="logEvent('Saving')"
-  (onSaved)="logEvent('Saved')"
-  (onEditCanceling)="logEvent('EditCanceling')"
-  (onEditCanceled)="logEvent('EditCanceled')"
-  (onSelectionChanged)="selectionChanged($event)"
+  (onRowRemoved)="onDelete($event)"
+  (onRowUpdated)="onUpdate($event)"
+  (onRowInserted)="onCreate($event)"
+  [hoverStateEnabled]="true"
 >
   <dxo-editing
     [allowUpdating]="true"
     [allowDeleting]="true"
+    [allowAdding]="true"
     [selectTextOnEditStart]="true"
     [useIcons]="true"
+    [confirmDelete]="true"
   >
   </dxo-editing>
 
