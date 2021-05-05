@@ -5,12 +5,17 @@
     keyExpr="staffId"
     [showBorders]="true"
     [hoverStateEnabled]="true"
-    (onRowInserted)="logEvent('RowInserted')"
-    (onRowUpdated)="logEvent('RowUpdated')"
-    (onRowRemoved)="logEvent('RowRemoved')"
+    (onRowInserted)="onCreate($event)"
+    (onRowUpdated)="onUpdate($event)"
   >
+    <dxo-header-filter [visible]="true"> </dxo-header-filter>
+
+    <dxo-filter-panel [visible]="true"> </dxo-filter-panel>
+
+    <dxo-filter-row [visible]="true"> </dxo-filter-row>
+
     <dxo-paging [enabled]="false"></dxo-paging>
-    <dxo-editing mode="popup" [allowUpdating]="true">
+    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true">
       <dxo-popup
         title="Staff Information"
         [showTitle]="true"
@@ -22,22 +27,13 @@
         <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
           <dxi-item dataField="firstName" caption="First Name"></dxi-item>
           <dxi-item dataField="lastName" caption="Last Name"></dxi-item>
-
-          <dxi-item dataField="BirthDate"></dxi-item>
-          <dxi-item dataField="Position"></dxi-item>
-
-          <dxi-item
-            dataField="Notes"
-            editorType="dxTextArea"
-            [colSpan]="2"
-            [editorOptions]="{ height: 100 }"
-          >
-          </dxi-item>
+          <dxi-item dataField="phone" caption="Phone"></dxi-item>
+          <dxi-item dataField="email" caption="Email"></dxi-item>
         </dxi-item>
 
         <dxi-item
           itemType="group"
-          caption="Home Address"
+          caption="Store Information"
           [colCount]="2"
           [colSpan]="2"
         >
@@ -49,16 +45,16 @@
             >
             </dxo-lookup>
           </dxi-item>
-          <dxi-item dataField="Address"></dxi-item>
+          <dxi-item dataField="active"></dxi-item>
         </dxi-item>
       </dxo-form>
     </dxo-editing>
 
     <dxi-column dataField="firstName"></dxi-column>
     <dxi-column dataField="lastName"></dxi-column>
-    <dxi-column dataField="email" dataType="date"> </dxi-column>
-    <dxi-column dataField="phone" [width]="170"> </dxi-column>
-    <dxi-column dataField="storeId" caption="Store" [width]="125">
+    <dxi-column dataField="email"> </dxi-column>
+    <dxi-column dataField="phone"> </dxi-column>
+    <dxi-column dataField="storeId" caption="Store">
       <dxo-lookup
         [dataSource]="stores"
         displayExpr="storeName"

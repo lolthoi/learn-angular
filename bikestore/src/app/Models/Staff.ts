@@ -11,7 +11,6 @@ export class Staffs {
   storeId: number;
   managerId: number | null;
   manager: Staffs;
-  store: Stores;
   inverseManager: Staffs[];
   orders: Orders[];
 }
