@@ -4,6 +4,25 @@ import { Stores } from 'src/app/Models/Store';
 import { StaffService } from 'src/app/Services/staff.service';
 import { StoreService } from 'src/app/Services/store.service';
 
+var nhanvien: Staffs[];
+
+const sendRequest = function (value) {
+  let flag: Boolean;
+  for (let index = 0; index < nhanvien.length; index++) {
+    if (value == nhanvien[index].email) {
+      flag == true;
+      break;
+    }
+  }
+  if (flag == true) {
+    return new Promise((resolve) => {
+      setTimeout(function () {
+        resolve(value);
+      }, 1000);
+    });
+  }
+};
+
 @Component({
   selector: 'app-staff',
   templateUrl: './staff.component.html',
@@ -13,6 +32,11 @@ export class StaffComponent implements OnInit {
   staffs: Staffs[];
   staff = new Staffs();
   stores: Stores[];
+  namePattern: any = /^[^0-9]+$/;
+  phonePattern: any = /^\(\s*[02-9]\d{2}\)\s*\d{3}\s*-\s*\d{4}$/;
+  phoneRules: any = {
+    X: /[02-9]/,
+  };
 
   constructor(
     private staffService: StaffService,
@@ -22,6 +46,7 @@ export class StaffComponent implements OnInit {
   ngOnInit(): void {
     this.staffService.getAll().subscribe((res: any) => {
       this.staffs = res;
+      nhanvien = res;
     });
     this.storeService.getAll().subscribe((res: any) => {
       this.stores = res;
@@ -34,8 +59,8 @@ export class StaffComponent implements OnInit {
       lastName: e.data.lastName,
       storeId: e.data.storeId,
       active: e.data.active,
-      email: '',
-      phone: '',
+      email: e.data.email,
+      phone: e.data.phone,
       managerId: null,
       manager: null,
       inverseManager: null,
@@ -47,7 +72,6 @@ export class StaffComponent implements OnInit {
   }
 
   onUpdate(e: any) {
-    debugger;
     this.staff = {
       staffId: e.key,
       firstName: e.data.firstName,
@@ -64,5 +88,9 @@ export class StaffComponent implements OnInit {
     this.staffService.update(this.staff).subscribe(() => {
       this.staffs;
     });
+  }
+
+  asyncValidation(params) {
+    return sendRequest(params.value);
   }
 }

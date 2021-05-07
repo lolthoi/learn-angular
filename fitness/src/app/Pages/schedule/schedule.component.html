@@ -1,0 +1,54 @@
+<dx-data-grid
+  id="gridSchedule"
+  [dataSource]="schedules"
+  keyExpr="id"
+  [showBorders]="true"
+  [focusedRowEnabled]="true"
+  [hoverStateEnabled]="true"
+  (onRowInserted)="onCreate($event)"
+  (onRowUpdated)="onUpdate($event)"
+  (onRowRemoved)="onDelete($event)"
+>
+  <dxo-editing
+    [allowUpdating]="true"
+    [allowDeleting]="true"
+    [allowAdding]="true"
+    [selectTextOnEditStart]="true"
+    [useIcons]="true"
+  >
+  </dxo-editing>
+
+  <dxo-header-filter [visible]="true"> </dxo-header-filter>
+
+  <dxo-filter-panel [visible]="true"> </dxo-filter-panel>
+
+  <dxo-filter-row [visible]="true"> </dxo-filter-row>
+
+  <dxo-paging [pageSize]="10"> </dxo-paging>
+
+  <dxo-pager
+    [allowedPageSizes]="[5, 10]"
+    [showPageSizeSelector]="true"
+    [showNavigationButtons]="true"
+  >
+  </dxo-pager>
+  <dxi-column dataField="wId" caption="Workout">
+    <dxo-lookup [dataSource]="workouts" valueExpr="id" displayExpr="title">
+    </dxo-lookup>
+  </dxi-column>
+
+  <dxi-column dataField="dId" caption="Day">
+    <dxo-lookup [dataSource]="days" valueExpr="id" displayExpr="title">
+    </dxo-lookup>
+  </dxi-column>
+
+  <dxi-column dataField="exId" caption="Exercise">
+    <dxo-lookup [dataSource]="exercises" valueExpr="id" displayExpr="title">
+    </dxo-lookup>
+  </dxi-column>
+  <dxi-column dataField="status" caption="Workout or not ?"> </dxi-column>
+
+  <dxi-column dataField="repeats" caption="Repeats"> </dxi-column>
+
+  <dxi-column dataField="sets" caption="sets"> </dxi-column>
+</dx-data-grid>

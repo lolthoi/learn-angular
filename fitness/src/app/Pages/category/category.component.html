@@ -1,0 +1,37 @@
+<dx-data-grid
+  id="gridCategory"
+  [dataSource]="categories"
+  keyExpr="id"
+  [showBorders]="true"
+  [focusedRowEnabled]="true"
+  [hoverStateEnabled]="true"
+  (onRowInserted)="onCreate($event)"
+  (onRowUpdated)="onUpdate($event)"
+  (onRowRemoved)="onDelete($event)"
+>
+  <dxo-editing
+    [allowUpdating]="true"
+    [allowDeleting]="true"
+    [allowAdding]="true"
+    [selectTextOnEditStart]="true"
+    [useIcons]="true"
+  >
+  </dxo-editing>
+
+  <dxo-header-filter [visible]="true"> </dxo-header-filter>
+
+  <dxo-filter-panel [visible]="true"> </dxo-filter-panel>
+
+  <dxo-filter-row [visible]="true"> </dxo-filter-row>
+
+  <dxo-paging [pageSize]="10"> </dxo-paging>
+
+  <dxo-pager
+    [allowedPageSizes]="[5, 10]"
+    [showPageSizeSelector]="true"
+    [showNavigationButtons]="true"
+  >
+  </dxo-pager>
+
+  <dxi-column dataField="name" caption="Category name"> </dxi-column>
+</dx-data-grid>
