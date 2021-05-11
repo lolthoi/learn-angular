@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Day } from 'src/app/Models/Day';
 import { Exercise } from 'src/app/Models/Exercise';
 import { Schedule } from 'src/app/Models/Schedule';
+import { Status } from 'src/app/Models/Status';
 import { Workout } from 'src/app/Models/Workout';
 import { DayService } from 'src/app/Services/day.service';
 import { ExerciseService } from 'src/app/Services/exercise.service';
@@ -19,6 +20,9 @@ export class ScheduleComponent implements OnInit {
   workouts: Workout[];
   exercises: Exercise[];
   days: Day[];
+  status: Status[];
+  repeatPattern: any = /^\b(0[1-9]|[1-9]|1[0-9]|20)\b$/;
+  setPattern: any = /^\b(0[1-9]|[1-9]|10)\b$/;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -31,6 +35,7 @@ export class ScheduleComponent implements OnInit {
     this.scheduleService.getAll().subscribe((res: any) => {
       this.schedules = res;
     });
+    this.status = this.scheduleService.getStatuts();
     this.workoutService.getAll().subscribe((res: any) => {
       this.workouts = res;
     });
@@ -40,13 +45,15 @@ export class ScheduleComponent implements OnInit {
     this.dayService.getAll().subscribe((res: any) => {
       this.days = res;
     });
+    console.log(this.schedules);
   }
+
   onUpdate(e: any) {
     this.schedule = {
       id: e.key,
-      wId: e.data.wid,
-      exId: e.data.exId,
-      dId: e.data.did,
+      WId: e.data.WId,
+      ExId: e.data.ExId,
+      DId: e.data.DId,
       status: e.data.status,
       repeats: e.data.repeats,
       sets: e.data.sets,
@@ -59,9 +66,9 @@ export class ScheduleComponent implements OnInit {
   onCreate(e: any) {
     this.schedule = {
       id: this.schedule.id,
-      wId: e.data.wId,
-      exId: e.data.exId,
-      dId: e.data.dId,
+      WId: e.data.wId,
+      ExId: e.data.exId,
+      DId: e.data.dId,
       status: e.data.status,
       repeats: e.data.repeats,
       sets: e.data.sets,

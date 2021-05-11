@@ -13,6 +13,9 @@ export class WorkoutComponent implements OnInit {
   workouts: Workout[];
   workout = new Workout();
   categories: Category[];
+  durationPattern: any = /^\d{1,2}$/;
+  pricePattern: any = /^\d{1,4}$/;
+
   constructor(
     private workoutService: WorkoutService,
     private categoryService: CategoryService
@@ -38,11 +41,17 @@ export class WorkoutComponent implements OnInit {
       orderItems: [],
       schedule: [],
     };
-    this.workoutService.update(this.workout).subscribe(() => {
-      this.workouts;
-    });
+    var answer = window.confirm('Update workout: ' + e.data.title + ' ?');
+    if (answer) {
+      this.workoutService.update(this.workout).subscribe(() => {
+        this.workouts;
+      });
+    } else {
+      window.alert('Update fail...');
+    }
   }
 
+  onInsertValidate(e: any) {}
   onCreate(e: any) {
     this.workout = {
       id: this.workout.id,
@@ -55,9 +64,15 @@ export class WorkoutComponent implements OnInit {
       orderItems: [],
       schedule: [],
     };
-    this.workoutService.create(this.workout).subscribe(() => {
-      this.workouts;
-    });
+    var answer = window.confirm('Create new workout ?');
+    if (answer) {
+      this.workoutService.create(this.workout).subscribe(() => {
+        this.workouts;
+      });
+      window.alert('Create workout success');
+    } else {
+      window.alert('Create fail...');
+    }
   }
 
   onDelete(e: any) {

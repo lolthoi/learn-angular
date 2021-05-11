@@ -32,23 +32,45 @@
     [showNavigationButtons]="true"
   >
   </dxo-pager>
+
   <dxi-column dataField="wId" caption="Workout">
     <dxo-lookup [dataSource]="workouts" valueExpr="id" displayExpr="title">
     </dxo-lookup>
+    <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
 
   <dxi-column dataField="dId" caption="Day">
-    <dxo-lookup [dataSource]="days" valueExpr="id" displayExpr="title">
+    <dxo-lookup [dataSource]="days" valueExpr="id" displayExpr="day1">
     </dxo-lookup>
+    <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
 
   <dxi-column dataField="exId" caption="Exercise">
     <dxo-lookup [dataSource]="exercises" valueExpr="id" displayExpr="title">
     </dxo-lookup>
   </dxi-column>
-  <dxi-column dataField="status" caption="Workout or not ?"> </dxi-column>
 
-  <dxi-column dataField="repeats" caption="Repeats"> </dxi-column>
+  <dxi-column dataField="status" caption="Workout or not ?">
+    <dxo-lookup [dataSource]="status" valueExpr="id" displayExpr="name">
+    </dxo-lookup>
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+  </dxi-column>
 
-  <dxi-column dataField="sets" caption="sets"> </dxi-column>
+  <dxi-column dataField="repeats" caption="Repeats"
+    ><dxi-validation-rule type="required"></dxi-validation-rule>
+    <dxi-validation-rule
+      type="pattern"
+      [pattern]="repeatPattern"
+      message="Repeats range from 1 to 20"
+    ></dxi-validation-rule>
+  </dxi-column>
+
+  <dxi-column dataField="sets" caption="Sets">
+    <dxi-validation-rule type="required"></dxi-validation-rule>
+    <dxi-validation-rule
+      type="pattern"
+      [pattern]="setPattern"
+      message="Sets range from 1 to 10"
+    ></dxi-validation-rule
+  ></dxi-column>
 </dx-data-grid>

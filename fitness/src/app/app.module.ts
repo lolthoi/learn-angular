@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { CategoryComponent } from './Pages/category/category.component';
-import { DxDataGridModule } from 'devextreme-angular';
+import { DxDataGridModule, DxFileUploaderModule } from 'devextreme-angular';
 import { WorkoutComponent } from './Pages/workout/workout.component';
 import { ExerciseComponent } from './Pages/exercise/exercise.component';
 import { ScheduleComponent } from './Pages/schedule/schedule.component';
@@ -24,6 +24,7 @@ import { ScheduleComponent } from './Pages/schedule/schedule.component';
     AppRoutingModule,
     HttpClientModule,
     DxDataGridModule,
+    DxFileUploaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

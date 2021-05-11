@@ -5,6 +5,7 @@
   [showBorders]="true"
   [focusedRowEnabled]="true"
   [hoverStateEnabled]="true"
+  (onRowInserting)="onInsertValidate($event)"
   (onRowInserted)="onCreate($event)"
   (onRowUpdated)="onUpdate($event)"
   (onRowRemoved)="onDelete($event)"
@@ -33,18 +34,52 @@
   >
   </dxo-pager>
 
-  <dxi-column dataField="title" caption="Workout name"> </dxi-column>
+  <dxi-column dataField="title" caption="Workout title">
+    <dxi-validation-rule
+      type="required"
+      message="workout title is required"
+    ></dxi-validation-rule>
+  </dxi-column>
 
-  <dxi-column dataField="description" caption="Description"> </dxi-column>
+  <dxi-column dataField="description" caption="Description">
+    <dxi-validation-rule
+      type="required"
+      message="workout description is required"
+    ></dxi-validation-rule>
+  </dxi-column>
 
   <dxi-column dataField="image" caption="Image"> </dxi-column>
 
-  <dxi-column dataField="duration" caption="Duration (Weeks)"> </dxi-column>
+  <dxi-column dataField="duration" caption="Duration (Weeks)">
+    <dxi-validation-rule
+      type="required"
+      message="Enter number of weeks"
+    ></dxi-validation-rule>
+    <dxi-validation-rule
+      type="pattern"
+      [pattern]="durationPattern"
+      message="Number of weeks under 99"
+    ></dxi-validation-rule>
+  </dxi-column>
 
-  <dxi-column dataField="price" caption="Price (USD)"> </dxi-column>
+  <dxi-column dataField="price" caption="Price (USD)">
+    <dxi-validation-rule
+      type="required"
+      message="Enter amount of USD"
+    ></dxi-validation-rule>
+    <dxi-validation-rule
+      type="pattern"
+      [pattern]="pricePattern"
+      message="Range from 1 to 9999 USD"
+    ></dxi-validation-rule>
+  </dxi-column>
 
   <dxi-column dataField="categoryId" caption="Category">
     <dxo-lookup [dataSource]="categories" valueExpr="id" displayExpr="name">
     </dxo-lookup>
+    <dxi-validation-rule
+      type="required"
+      message="Choose category"
+    ></dxi-validation-rule>
   </dxi-column>
 </dx-data-grid>

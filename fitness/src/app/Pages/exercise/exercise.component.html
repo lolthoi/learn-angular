@@ -33,11 +33,31 @@
   >
   </dxo-pager>
 
-  <dxi-column dataField="title" caption="Exercise name"> </dxi-column>
+  <dxi-column dataField="title" caption="Exercise title">
+    <dxi-validation-rule
+      type="required"
+      message="Exercise title is required"
+    ></dxi-validation-rule>
+  </dxi-column>
 
-  <dxi-column dataField="description" caption="Description"> </dxi-column>
+  <dxi-column dataField="description" caption="Description">
+    <dxi-validation-rule
+      type="required"
+      message="Exercise description is required"
+    ></dxi-validation-rule>
+  </dxi-column>
 
-  <dxi-column dataField="image" caption="Image"> </dxi-column>
+  <dxi-column dataField="image" caption="Image">
+    <dxi-validation-rule
+      type="required"
+      message="Exercise image is required"
+    ></dxi-validation-rule
+  ></dxi-column>
 
-  <dxi-column dataField="link" caption="Link"> </dxi-column>
+  <dxi-column dataField="link" caption="Link">
+    <dxi-validation-rule
+      type="required"
+      message="Exercise link is required"
+    ></dxi-validation-rule
+  ></dxi-column>
 </dx-data-grid>
