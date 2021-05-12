@@ -33,19 +33,19 @@
   >
   </dxo-pager>
 
-  <dxi-column dataField="wId" caption="Workout">
+  <dxi-column dataField="wid" caption="Workout">
     <dxo-lookup [dataSource]="workouts" valueExpr="id" displayExpr="title">
     </dxo-lookup>
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
 
-  <dxi-column dataField="dId" caption="Day">
-    <dxo-lookup [dataSource]="days" valueExpr="id" displayExpr="day1">
+  <dxi-column dataField="did" caption="Day">
+    <dxo-lookup [dataSource]="days" valueExpr="id" displayExpr="name">
     </dxo-lookup>
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
 
-  <dxi-column dataField="exId" caption="Exercise">
+  <dxi-column dataField="exid" caption="Exercise">
     <dxo-lookup [dataSource]="exercises" valueExpr="id" displayExpr="title">
     </dxo-lookup>
   </dxi-column>
@@ -56,7 +56,7 @@
     <dxi-validation-rule type="required"></dxi-validation-rule>
   </dxi-column>
 
-  <dxi-column dataField="repeats" caption="Repeats"
+  <dxi-column dataField="reps" caption="Repeats"
     ><dxi-validation-rule type="required"></dxi-validation-rule>
     <dxi-validation-rule
       type="pattern"

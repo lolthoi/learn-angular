@@ -2,6 +2,6 @@ import { Schedule } from './Schedule';
 
 export class Day {
   id: number;
-  title: string;
+  name: string;
   schedule: Schedule[];
 }

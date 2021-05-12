@@ -51,11 +51,11 @@ export class ScheduleComponent implements OnInit {
   onUpdate(e: any) {
     this.schedule = {
       id: e.key,
-      WId: e.data.WId,
-      ExId: e.data.ExId,
-      DId: e.data.DId,
+      wid: e.data.wid,
+      did: e.data.did,
+      exid: e.data.exid,
       status: e.data.status,
-      repeats: e.data.repeats,
+      reps: e.data.reps,
       sets: e.data.sets,
     };
     this.scheduleService.update(this.schedule).subscribe(() => {
@@ -66,11 +66,11 @@ export class ScheduleComponent implements OnInit {
   onCreate(e: any) {
     this.schedule = {
       id: this.schedule.id,
-      WId: e.data.wId,
-      ExId: e.data.exId,
-      DId: e.data.dId,
+      wid: e.data.wid,
+      did: e.data.did,
+      exid: e.data.exid,
       status: e.data.status,
-      repeats: e.data.repeats,
+      reps: e.data.reps,
       sets: e.data.sets,
     };
     this.scheduleService.create(this.schedule).subscribe(() => {

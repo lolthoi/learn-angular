@@ -1,9 +1,9 @@
 export class Schedule {
   id: string;
-  WId: string;
-  ExId: string;
-  DId: number;
+  wid: string;
+  did: number;
+  exid: string | null;
   status: number;
-  repeats: number;
-  sets: number;
+  reps: number | null;
+  sets: number | null;
 }
